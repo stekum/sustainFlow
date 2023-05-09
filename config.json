@@ -1,0 +1,23 @@
+{
+  "environments": {
+    "dev": {
+      "connectionString": "CONNECTION_STRING_DEV",
+      "powerBIWorkspace": "POWER_BI_WORKSPACE_ID_DEV"
+    },
+    "uat": {
+      "connectionString": "CONNECTION_STRING_UAT",
+      "powerBIWorkspace": "POWER_BI_WORKSPACE_ID_UAT"
+    },
+    "prod": {
+      "connectionString": "CONNECTION_STRING_PROD",
+      "powerBIWorkspace": "POWER_BI_WORKSPACE_ID_PROD"
+    }
+  },
+  "solutionPath": "path/to/your/solution",
+  "powerBIReportsPath": "path/to/your/powerbi/reports",
+  "dataMigrationPath": "path/to/your/data_migration_scripts",
+  "enableDataMigration": false
+}
+
+
+
