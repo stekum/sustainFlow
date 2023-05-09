@@ -26,35 +26,16 @@ Replace the placeholders with the appropriate values for your environment.
 
 ## Step 4: Set up the GitHub Actions Workflow 
 
-Create a new file named alm.yml in your repository's .github/workflows folder. Copy the following content to the alm.yml file:
+Create a new file named alm.yml in your repository's .github/workflows folder. 
 
-name: ALM Workflow
+## Step 5: Deploy and Migrate Data
 
-on:
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: '0 3 * * *' # Scheduled at 3 AM daily
+Push your changes to the repository, and the GitHub Actions workflow will automatically deploy your Power Apps solution and Power BI reports to the specified environments.
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+If you want to enable data migration between environments, set the "enableDataMigration" flag in the `config.json` file to `true`. You will need to implement the data migration logic in the `migrateData` function within the `deploy.js` file. This may involve using the Power Platform CLI, custom scripts, or other tools to migrate data between your environments.
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14
+Once the data migration feature is enabled and implemented, the GitHub Actions workflow will also handle data migration when triggered.
 
-    - name: Install dependencies
-      run: npm ci
+## Conclusion
 
-    - name: Deploy Solution and Power BI Reports
-      run: npm run deploy
-
-    - name: Migrate Data
-      run: npm run migrate-data
+With the provided setup, you can now automate ALM for Power Apps solutions and Power BI reports across multiple environments using GitHub Actions and the Power Platform CLI. Data migration between environments can also be optionally enabled as needed.
