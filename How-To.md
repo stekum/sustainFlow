@@ -14,7 +14,7 @@ Clone this repository to your local machine:
 
 ## Step 2: Install Dependencies
 
-Install the required dependencies:
+Install the required dependencies: npm install
 
 
 ## Step 3: Configure Environment Settings
@@ -23,3 +23,38 @@ Edit the `config.json` file to include the connection strings for each environme
 
 Replace the placeholders with the appropriate values for your environment.
 
+
+## Step 4: Set up the GitHub Actions Workflow 
+
+Create a new file named alm.yml in your repository's .github/workflows folder. Copy the following content to the alm.yml file:
+
+name: ALM Workflow
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 3 * * *' # Scheduled at 3 AM daily
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Deploy Solution and Power BI Reports
+      run: npm run deploy
+
+    - name: Migrate Data
+      run: npm run migrate-data
