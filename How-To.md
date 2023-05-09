@@ -12,3 +12,14 @@ Follow these steps to set up the Power Platform ALM template in your project.
 
 Clone this repository to your local machine:
 
+## Step 2: Install Dependencies
+
+Install the required dependencies:
+
+
+## Step 3: Configure Environment Settings
+
+Edit the `config.json` file to include the connection strings for each environment, Power BI workspace IDs, and paths to your Power Apps solution, Power BI reports, and data migration scripts.
+
+Replace the placeholders with the appropriate values for your environment.
+
